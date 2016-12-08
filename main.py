@@ -16,6 +16,7 @@
 #   and not use any of the mornal ones built into Pythonista.
 #
 # To exit the app in Pythonista, pull down with 2 fingers.
+#I added another line - Tristan
 
 from scene import *
 import ui

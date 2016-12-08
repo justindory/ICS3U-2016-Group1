@@ -1,17 +1,11 @@
-# Created by: Mr. Coxall
-# Created on: Sep 2016
-# Created for: ICS3U
-# This scene shows a splash screen for 2 seconds,
-#   then transitions to the main menu.
-
 from scene import *
-import ui
+
 import time
+import ui
 
 from main_menu_scene import *
 
-
-class SplashScene(Scene):
+class GameScene(Scene):
     def setup(self):
         # this method is called, when user moves to this scene
         
@@ -24,7 +18,7 @@ class SplashScene(Scene):
                                      parent = self,
                                      scale = 1.25)
                                      
-        self.game_label = LabelNode(text = 'HIT & RUN',
+        self.game_label = LabelNode(text = 'Run',
                                      font=('Markerfelt-Wide', 80),
                                      parent = self,
                                      position = self.size / 2,
@@ -34,7 +28,7 @@ class SplashScene(Scene):
         
         # after 2 seconds, move to main menu scene
         if not self.presented_scene and time.time() - self.start_time > 3:
-            self.present_modal_scene(MainMenuScene())
+            self.dismiss_modal_scene()
     
     def touch_began(self, touch):
         # this method is called, when user touches the screen
