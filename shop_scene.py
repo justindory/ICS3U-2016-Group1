@@ -41,7 +41,7 @@ class HitAndRunShopScene(Scene):
                                      color = 'grey')
                                      
         self.coins_label = LabelNode(text = 'Coins - ' + str(self.__coins),
-                                     font=('CopperPlate-Light', 30),
+                                     font = ('CopperPlate-Light', 30),
                                      parent = self,
                                      position = (self.screen_center_x, self.size_of_screen_y - 50),
                                      color = 'gold')
@@ -52,6 +52,17 @@ class HitAndRunShopScene(Scene):
                                        scale = 0.17,
                                        color = 'grey')
                                        
+        self.damage_buff = SpriteNode('assets/sprites/runes/runeGrey_slab_006.png',
+                                       parent = self,
+                                       position = (225, self.size_of_screen_y - 200),
+                                       scale = 1.75,
+                                       color = 'grey')
+                                       
+        self.crit_damage_buff = SpriteNode('assets/sprites/runes/runeGrey_slab_010.png',
+                                       parent = self,
+                                       position = (450, self.size_of_screen_y - 200),
+                                       scale = 1.75,
+                                       color = 'grey')
     def update(self):
         # this method is called, hopefully, 60 times a second
         pass
