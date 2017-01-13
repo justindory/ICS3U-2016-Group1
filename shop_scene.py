@@ -31,13 +31,6 @@ class HitAndRunShopScene(Scene):
         self.buy5_label_down = False
         self.buy6_label_down = False
         
-        self.price1 = 100
-        self.price2 = 100
-        self.price3 = 100
-        self.price4 = 100
-        self.price5 = 100
-        self.price6 = 100
-        
         # this method is called, when user moves to this scene
         
         # create timer, so that after 2 seconds move to next scene
@@ -157,7 +150,7 @@ class HitAndRunShopScene(Scene):
                                      color = 'grey',
                                      scale = 0.65,
                                      position = (self.screen_center_x, self.screen_center_y + self.screen_center_y/1.6))
-        self.price1_label = LabelNode(text = str(self.price1),
+        self.price1_label = LabelNode(text = str(globals.price1),
                                      font=('CopperPlate-Light', 35),
                                      parent = self,
                                      position = (self.screen_center_x, self.screen_center_y + self.screen_center_y/1.6),
@@ -167,7 +160,7 @@ class HitAndRunShopScene(Scene):
                                      color = 'grey',
                                      scale = 0.65,
                                      position = (self.screen_center_x, self.screen_center_y + self.screen_center_y/2.7))
-        self.price2_label = LabelNode(text = str(self.price2),
+        self.price2_label = LabelNode(text = str(globals.price2),
                                      font=('CopperPlate-Light', 35),
                                      parent = self,
                                      position = (self.screen_center_x, self.screen_center_y + self.screen_center_y/2.7),
@@ -177,7 +170,7 @@ class HitAndRunShopScene(Scene):
                                      color = 'grey',
                                      scale = 0.65,
                                      position = (self.screen_center_x, self.screen_center_y + self.screen_center_y/9.25))
-        self.price3_label = LabelNode(text = str(self.price3),
+        self.price3_label = LabelNode(text = str(globals.price3),
                                      font=('CopperPlate-Light', 35),
                                      parent = self,
                                      position = (self.screen_center_x, self.screen_center_y + self.screen_center_y/9.25),
@@ -187,7 +180,7 @@ class HitAndRunShopScene(Scene):
                                      color = 'grey',
                                      scale = 0.65,
                                      position = (self.screen_center_x, self.screen_center_y - self.screen_center_y/6.5))
-        self.price4_label = LabelNode(text = str(self.price4),
+        self.price4_label = LabelNode(text = str(globals.price4),
                                      font=('CopperPlate-Light', 35),
                                      parent = self,
                                      position = (self.screen_center_x, self.screen_center_y - self.screen_center_y/6.5),
@@ -197,7 +190,7 @@ class HitAndRunShopScene(Scene):
                                      color = 'grey',
                                      scale = 0.65,
                                      position = (self.screen_center_x, self.screen_center_y - self.screen_center_y/2.4))
-        self.price5_label = LabelNode(text = str(self.price5),
+        self.price5_label = LabelNode(text = str(globals.price5),
                                      font=('CopperPlate-Light', 35),
                                      parent = self,
                                      position = (self.screen_center_x, self.screen_center_y - self.screen_center_y/2.4),
@@ -207,7 +200,7 @@ class HitAndRunShopScene(Scene):
                                      color = 'grey',
                                      scale = 0.65,
                                      position = (self.screen_center_x, self.screen_center_y - self.screen_center_y/1.465))
-        self.price6_label = LabelNode(text = str(self.price6),
+        self.price6_label = LabelNode(text = str(globals.price6),
                                      font=('CopperPlate-Light', 35),
                                      parent = self,
                                      position = (self.screen_center_x, self.screen_center_y - self.screen_center_y/1.465),
@@ -278,16 +271,15 @@ class HitAndRunShopScene(Scene):
                                      position = (self.screen_center_x, self.size_of_screen_y - 50),
                                      color = 'gold'))
     def update(self):
-        # this method is called, hopefully, 60 times a second
-        globals.coins = globals.coins + 10
+        # this method is called, hopefully, 60 times a seco
         self.coins_display.text = 'Coins - ' + str(globals.coins)
         # after 2 seconds, move to main menu scene
-        self.price1_label.text = str(self.price1)
-        self.price2_label.text = str(self.price2)
-        self.price3_label.text = str(self.price3)
-        self.price4_label.text = str(self.price4)
-        self.price5_label.text = str(self.price5)
-        self.price6_label.text = str(self.price6)
+        self.price1_label.text = str(globals.price1)
+        self.price2_label.text = str(globals.price2)
+        self.price3_label.text = str(globals.price3)
+        self.price4_label.text = str(globals.price4)
+        self.price5_label.text = str(globals.price5)
+        self.price6_label.text = str(globals.price6)
         
     def touch_began(self, touch):
         # this method is called, when user touches the screen
@@ -304,18 +296,18 @@ class HitAndRunShopScene(Scene):
             
         if self.buy1_label.frame.contains_point(touch.location):
             self.buy1_label_down = True
-            if globals.coins >= self.price1:
-                globals.coins = globals.coins - self.price1
-                self.price1 = self.price1*2
+            if globals.coins >= globals.price1:
+                globals.coins = globals.coins - globals.price1
+                globals.price1 = globals.price1*2
                 globals.fullhealth = round(globals.fullhealth*1.5)
             else:
                 pass
              
         if self.buy2_label.frame.contains_point(touch.location):
             self.buy2_label_down = True
-            if globals.coins >= self.price2:
-                globals.coins = globals.coins - self.price2
-                self.price2 = self.price2*2
+            if globals.coins >= globals.price2:
+                globals.coins = globals.coins - globals.price2
+                globals.price2 = globals.price2*2
                 globals.playerdmglowest = round(globals.playerdmglowest*1.5)
                 globals.playerdmghighest = round(globals.playerdmghighest*1.5)
             else:
@@ -323,18 +315,18 @@ class HitAndRunShopScene(Scene):
             
         if self.buy3_label.frame.contains_point(touch.location):
             self.buy3_label_down = True
-            if globals.coins >= self.price3:
-                globals.coins = globals.coins - self.price3
-                self.price3 = self.price3*2
+            if globals.coins >= globals.price3:
+                globals.coins = globals.coins - globals.price3
+                globals.price3 = globals.price3*2
                 globals.playercritdmg = round(globals.playercritdmg*1.5)
             else:
                 pass
             
         if self.buy4_label.frame.contains_point(touch.location):
             self.buy4_label_down = True
-            if globals.coins >= self.price4:
-                globals.coins = globals.coins - self.price4
-                self.price4 = self.price4*2
+            if globals.coins >= globals.price4:
+                globals.coins = globals.coins - globals.price4
+                globals.price4 = globals.price4*2
                 globals.overtimeregen = round(globals.overtimeregen*1.5)
                 
             else:
@@ -342,18 +334,18 @@ class HitAndRunShopScene(Scene):
             
         if self.buy5_label.frame.contains_point(touch.location):
             self.buy5_label_down = True
-            if globals.coins >= self.price5:
-                globals.coins = globals.coins - self.price5
-                self.price5 = self.price5*2
+            if globals.coins >= globals.price5:
+                globals.coins = globals.coins - globals.price5
+                globals.price5 = globals.price5*2
                 globals.playerarmor = round(globals.playerarmor*1.5)
             else:
                 pass
             
         if self.buy6_label.frame.contains_point(touch.location):
             self.buy6_label_down = True
-            if globals.coins >= self.price6:
-                globals.coins = globals.coins - self.price6
-                self.price = self.price6*2
+            if globals.coins >= globals.price6:
+                globals.coins = globals.coins - globals.price6
+                globals.price6 = globals.price6*2
                 globals.playeratkspeed = round(globals.playeratkspeed*1.5)
             else:
                 pass
